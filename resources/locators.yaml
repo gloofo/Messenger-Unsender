@@ -1,0 +1,8 @@
+page:
+  email:              "css:#email"
+  password:           "css:#pass"
+  loginbtn:           "css:#loginbutton"
+  main:               "https://www.messenger.com/"
+  chatsIco:           "css:a[aria-label='Chats']"
+  chat:               "css:div[role=none][style='background-color: rgb(0, 132, 255);']"
+  more:               "css:div[aria-label='More']"

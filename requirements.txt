@@ -1,0 +1,4 @@
+robotframework-selenium2library
+robotframework-faker
+pyyaml
+rpaframework
