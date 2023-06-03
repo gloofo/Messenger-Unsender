@@ -2,6 +2,7 @@
 Resource                    ../src/core.robot
 
 Library    OperatingSystem
+Library    Process
 
 *** Keywords ***
 Open Messenger
@@ -33,13 +34,19 @@ Inputs credentials
 
 Pause Until OK
     [Documentation]          Scipt is pause until user click OK
-    Pause Execution          SELECT THE CHAT YOU WANT TO UNSEND YOUR MESSAGES FIRST THEN CLICK OK
+    Pause Execution          SELECT THE CHAT YOU WANT TO UNSEND YOUR MESSAGES FIRST THEN CLICK OK, I SUGGEST TO LOAD ALL YOUR MESSAGES FROM THE TOP BEFORE STARTING.
 
 Check Messages
-    [Documentation]          temp 
+    [Documentation]          Unsends Messages
     ${elements}              Get WebElements        ${page.chat}
-        Move mouse                offset:1085,539
-        Press Mouse Button        middle
-        Sleep                     1s
-        Move mouse                offset:926,310
 
+    FOR    ${element}    IN  @{elements}
+        Sleep    1s
+        Mouse Over           ${element}
+        Sleep    1s
+        Execute Javascript                   document.querySelector("div[aria-label='More']").click();
+        Execute Javascript                   document.querySelector("div[aria-label='Remove message']").click();
+        Wait Until Element Is Visible        css:div[aria-label='Remove'][tabindex='0']
+        Execute Javascript                   document.querySelector("div[aria-label='Remove'][tabindex='0']").click();
+        Wait Until Element Is Not Visible    css:div[aria-label='Remove'][tabindex='0']
+    END    
