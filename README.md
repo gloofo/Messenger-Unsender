@@ -1,6 +1,6 @@
 #### FB Messenger Unsender Prototype
 
-- Unsend or removes your messages on facebook messenger.
+- Unsend or removes your messages on facebook messenger web.
 
 #### Project Dependencies
 
